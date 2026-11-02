@@ -1,4 +1,7 @@
-from helpdesk.config import DATA_FILE, STATUS_OPTIONS, PRIORITY_OPTIONS
+import logging
+
+from helpdesk.config.path import DATA_FILE
+from helpdesk.domain.constants import STATUS_OPTIONS, PRIORITY_OPTIONS
 
 from helpdesk.storage.read_request import read_requests
 
@@ -11,8 +14,10 @@ from helpdesk.services.filtering_by_status_and_priority import filtering_by_stat
 from helpdesk.services.search_requests_by_title import search_requests_by_title
 
 
+logger = logging.getLogger(__name__)
+
 def error_handler(message: str) -> None:
-    print(f"Error: {message}")
+    print(message)
 
 def print_request(requests: dict) -> None:
     if not requests:
@@ -30,7 +35,10 @@ def print_request(requests: dict) -> None:
         print("-" * 40)
 
 def main():
+    logger.info("Starting HelpDesk CLI application")
+
     if not DATA_FILE.is_file():
+        logger.warning("Data file not found. Creating a new one.")
         DATA_FILE.touch()
 
     while True:
@@ -127,5 +135,6 @@ def main():
                         update_priority(request_id, priority, error_handler)
 
             case 5:
+                logger.info("Exiting HelpDesk CLI application")
                 print("Выход из программы")
                 break

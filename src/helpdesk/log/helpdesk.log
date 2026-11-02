@@ -1,0 +1,5 @@
+2026-11-03 02:14:48,263 || INFO | helpdesk.cli | Starting HelpDesk CLI application
+2026-11-03 02:16:27,766 || INFO | helpdesk.storage.read_request | Requests read successfully. No invalid requests found.
+2026-11-03 02:16:27,806 || INFO | helpdesk.services.create_request | Request with ID 2 created successfully
+2026-11-03 02:17:05,289 || INFO | helpdesk.storage.read_request | Requests read successfully. No invalid requests found.
+2026-11-03 02:17:12,636 || INFO | helpdesk.cli | Exiting HelpDesk CLI application
